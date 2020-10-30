@@ -2,13 +2,13 @@ package pl.dbapicar.DBapiCar.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.dbapicar.DBapiCar.models.Car;
 import pl.dbapicar.DBapiCar.models.CarNews;
 import pl.dbapicar.DBapiCar.services.CarService;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -34,6 +34,13 @@ public class CarController {
     @GetMapping("/carnews/name/{name}")
     public List<CarNews> findCarNewsByName(@PathVariable String name){
         return carService.findCarNewsByName(name);
+    }
+
+
+    @GetMapping("/carnews/date")
+    public List<Car> findCarsByDateFromTo(@RequestParam LocalDate dateFrom, @RequestParam(required = false) LocalDate dateTo){
+        if(dateTo != null) return carService.findCarsByDate(dateFrom,dateTo);
+        return carService.findCarsByDate(dateFrom);
     }
 
 

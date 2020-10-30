@@ -4,6 +4,7 @@ import pl.dbapicar.DBapiCar.models.Car;
 import pl.dbapicar.DBapiCar.models.CarNews;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface CarDBInterface {
@@ -14,8 +15,8 @@ public interface CarDBInterface {
     public List<Car> findAllCars();
     public List<Car> findCarsByBrand(String brand);
     public List<Car> findCarsByColor(String model);
-    public List<Car> findCarsByDate(Date date);
-    public List<Car> findCarsByDate(Date from, Date to);
+    public List<Car> findCarsByDate(LocalDate date);
+    public List<Car> findCarsByDate(LocalDate from, LocalDate to);
 
 
     public List<CarNews> findAllCarNews();

@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+
 @Service
 public class CarService implements CarDBInterface {
 
@@ -25,6 +26,9 @@ public class CarService implements CarDBInterface {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public void check(){
+        LocalDate localDate = LocalDate.of(1994,5,25);
+    }
 
 
     public boolean addCar(Car car){
@@ -64,7 +68,7 @@ public class CarService implements CarDBInterface {
                 Integer.parseInt(String.valueOf(element.get("id"))),
                 String.valueOf(element.get("brand")),
                 String.valueOf(element.get("color")),
-                Date.valueOf((LocalDate) element.get("dateCol"))
+                LocalDate.parse(String.valueOf(element.get("dateCol")))
                 )));
         return carList;
     }
@@ -88,13 +92,13 @@ public class CarService implements CarDBInterface {
         return getCarsData(maps);
     };
 
-    public List<Car> findCarsByDate(Date date){
+    public List<Car> findCarsByDate(LocalDate date){
         String sql = "SELECT * FROM Cars WHERE dateCol=?";
         List<Map<String,Object>> maps = jdbcTemplate.queryForList(sql,date);
         return getCarsData(maps);
     };
 
-    public List<Car> findCarsByDate(Date from, Date to){
+    public List<Car> findCarsByDate(LocalDate from, LocalDate to){
         String sql = "SELECT * FROM Cars WHERE dateCol>? AND dataCol<?";
         List<Map<String,Object>> maps = jdbcTemplate.queryForList(sql,from,to);
         return getCarsData(maps);

@@ -26,10 +26,17 @@ public class DBconfig {
         return new JdbcTemplate(dataSource);
 
     };
-
+//    Uncomment if you want to generate table Cars
 //    @EventListener(ApplicationReadyEvent.class)
 //    public void Init(){
-//        String sql = "CREATE TABLE Cars(video_id int, title VARCHAR(45), url VARCHAR(45), PRIMARY KEY(video_id))";
+//        String sql = "CREATE TABLE Cars(id int AUTO INCREMENT, brand VARCHAR(100), color VARCHAR(45), PRIMARY KEY(id))";
+//        getJdbcTemplete().update(sql);
+//    }
+
+    //Uncomment if you want to generate table CarNews
+//    @EventListener(ApplicationReadyEvent.class)
+//    public void Init(){
+//        String sql = "CREATE TABLE CarNews(author VARCHAR(100) NOT NULL, title VARCHAR(300) NOT NULL,description VARCHAR(300) NOT NULL, url VARCHAR(300) NOT NULL, urlToImage VARCHAR(300) NOT NULL, id int NOT NULL AUTO INCREMENT, PRIMARY KEY(id))";
 //        getJdbcTemplete().update(sql);
 //    }
 

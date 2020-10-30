@@ -1,18 +1,19 @@
 package pl.dbapicar.DBapiCar.models;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class Car {
 
     private int id;
     private String brand;
     private String color;
-    private Date dateCol;
+    private LocalDate dateCol;
 
     public Car() {
     }
 
-    public Car(int id, String brand, String color, Date date) {
+    public Car(int id, String brand, String color, LocalDate date) {
         this.id = id;
         this.brand = brand;
         this.color = color;
@@ -43,11 +44,11 @@ public class Car {
         this.color = color;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return dateCol;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.dateCol = date;
     }
 }
